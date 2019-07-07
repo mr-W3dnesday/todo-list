@@ -1,3 +1,24 @@
+function generateCard(task){
+    var cardA = `
+    <div class="col-4">
+        <div class="card"
+            <div class="card-body">
+                <h5 class="card-text">`;
+    var cardB = `</h5>
+                <h6 class="card-date mb-2 text-muted">`;
+    var cardC = `</h6>
+                <div class="card-btn">
+                    <button class="btn btn-primary" type="button" id="button-addon2">Done</button>
+                    <button class="btn btn-danger" type="button" id="button-addon2">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>`;
+    var now = new Date().toLocaleString().replace(",","").replace(/:.. /," ");
+    var cardFinal = cardA + task + cardB + now + cardC;
+    return cardFinal;
+}
+
 function enterTodo(){
     var task = inputBox.val();
     inputBox.val('');
@@ -5,8 +26,9 @@ function enterTodo(){
         addItem(task);
         // change motivational message inside input box when todo is uploaded
         changeMessage();
+        // popup confirming todo has been added
+        alert('New item added: ' + task);
     }
-    // popup confirming todo has been added
 }
 
 function changeMessage(){
@@ -18,9 +40,11 @@ function randInt(num){
 }
 
 function addItem(task){
-    var item = $("<li>").text(task);
-    todolist.append(item);
-    item.click(function(){
+    // var item = $("<li>").text(task);
+    // todolist.append(item);
+    todolist.append(generateCard(task));
+    //selecting whole todo list, not last element!!
+    todolist.last().click(function(){
         $(this).toggleClass('done');
     })
 }
@@ -44,7 +68,5 @@ compileList();
 // new todo items
 addButton.click(enterTodo);
 inputBox.bind('change',enterTodo);
-
-// behavior when hovering over list items
 
 // allow users to delete todos from list

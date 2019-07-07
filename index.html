@@ -18,14 +18,31 @@
     <div class="title container">
         <h1>To-do List</h1>
     </div>
-    <div class="input container">
-            <input type="text" name="name" placeholder="Get Organised!">
-            <button type="button" class="addbtn btn btn-light">Add</button>
+    <div class="input container-fluid py-3">
+        <div class="input-group">
+            <input type="text" class="form-control" aria-label="New To-do" aria-describedby="input-button">
+            <div class="input-group-append">
+                <button class="btn btn-outline-success btn-light" type="button" id="input-button">Add</button>
+            </div>
+        </div>
     </div>
     <div class="container">
         <ul id="todolist">
 
         </ul>
+        <!-- TEST CARD -->
+        <!-- <div class="col-4">
+            <div class="card"
+                <div class="card-body">
+                    <h5 class="card-text">Placeholder</h5>
+                    <h6 class="card-date mb-2 text-muted">07/07/2019 21:18</h6>
+                    <div class="card-btn">
+                        <button class="btn btn-danger" type="button" id="button-addon2">Delete</button>
+                        <button class="btn btn-primary" type="button" id="button-addon2">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
     </div>
     <script src="todo.js"></script>
 </body>
