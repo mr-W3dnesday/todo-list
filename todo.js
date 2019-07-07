@@ -3,9 +3,18 @@ function enterTodo(){
     inputBox.val('');
     if (task){
         addItem(task);
+        // change motivational message inside input box when todo is uploaded
+        changeMessage();
     }
-    // change motivational message inside input box when todo is uploaded
     // popup confirming todo has been added
+}
+
+function changeMessage(){
+    inputBox.attr('placeholder', messages[randInt(messages.length - 1)]);
+}
+
+function randInt(num){
+    return Math.round(Math.random() * num);
 }
 
 function addItem(task){
@@ -26,11 +35,13 @@ var todolist = $('#todolist');
 
 // create todo list using JS. Add cookie to store user todos
 var savedItems = ['Do homework', 'Pick up litter', 'Become all knowing', 'Teach monkey to shoplift'];
+var messages = ['Get Organised!','What\'s on your mind?','I can help you.']
+var inputBox = $('input');
+var addButton = $('.addbtn');
+changeMessage();
 compileList();
 
 // new todo items
-var inputBox = $('input');
-var addButton = $('.addbtn');
 addButton.click(enterTodo);
 inputBox.bind('change',enterTodo);
 
