@@ -1,6 +1,6 @@
 function generateCard(task){
     var cardA = `
-    <div class="col-4">
+    <div class="col-12 col-sm-6 col-md-4">
         <div class="card"
             <div class="card-body">
                 <h5 class="card-text">`;
