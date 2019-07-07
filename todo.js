@@ -1,19 +1,17 @@
 function generateCard(task){
     var cardA = `
-    <div class="col-12 col-sm-6 col-md-4">
-        <div class="card"
+        <div class="card mt-2"
             <div class="card-body">
                 <h5 class="card-text">`;
     var cardB = `</h5>
                 <h6 class="card-date mb-2 text-muted">`;
     var cardC = `</h6>
                 <div class="card-btn">
-                    <button class="btn btn-primary" type="button" id="button-addon2">Done</button>
-                    <button class="btn btn-danger" type="button" id="button-addon2">Delete</button>
+                    <button class="btn btn-primary" type="button" id="button-addon2"><i class="far fa-check-square"></i></button>
+                    <button class="btn btn-danger" type="button" id="button-addon2"><i class="far fa-trash-alt"></i></button>
                 </div>
             </div>
-        </div>
-    </div>`;
+        </div>`;
     var now = new Date().toLocaleString().replace(",","").replace(/:.. /," ");
     var cardFinal = cardA + task + cardB + now + cardC;
     return cardFinal;
@@ -40,11 +38,12 @@ function randInt(num){
 }
 
 function addItem(task){
-    // var item = $("<li>").text(task);
-    // todolist.append(item);
-    todolist.append(generateCard(task));
+    var item = $("<div>").html(generateCard(task));
+    item.addClass('col-12 col-sm-6 col-md-4');
+    todolist.append(item);
+    // todolist.append(generateCard(task));
     //selecting whole todo list, not last element!!
-    todolist.last().click(function(){
+    item.last().click(function(){
         $(this).toggleClass('done');
     })
 }
@@ -59,7 +58,7 @@ var todolist = $('#todolist');
 
 // create todo list using JS. Add cookie to store user todos
 var savedItems = ['Do homework', 'Pick up litter', 'Become all knowing', 'Teach monkey to shoplift'];
-var messages = ['Get Organised!','What\'s on your mind?','I can help you.']
+var messages = ['Get Organised!','What\'s on your mind?','You busy, busy bee...']
 var inputBox = $('input');
 var addButton = $('.addbtn');
 changeMessage();

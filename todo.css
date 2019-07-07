@@ -1,10 +1,9 @@
 .done{
     color: rgb(85, 85, 85);
-    text-decoration: line-through;
+    opacity: 0.3;
 }
 .done:hover{
     color: rgb(85, 85, 85);
-    text-decoration: line-through;
     font-size: inherit;
 }
 
@@ -12,8 +11,14 @@
     background-color: black;
 }
 
+.btn-outline-success{
+    color: white;
+    background-color: #28a745;
+    border-color: white;
+}
+
 .card{
-    max-width: 100%;
+    background-color: rgb(247, 247, 247)
 }
 
 body{
