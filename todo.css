@@ -1,0 +1,16 @@
+.done{
+    color: rgb(85, 85, 85);
+    text-decoration: line-through;
+}
+
+body{
+    background-color: rgb(0, 59, 0);
+}
+
+h1{
+    color: white;
+}
+
+li{
+    color: white;
+}
