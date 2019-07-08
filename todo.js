@@ -1,14 +1,14 @@
 function generateCard(task){
     var cardA = `
-        <div class="card mt-2"
+        <div class="card mt-2 py-2"
             <div class="card-body">
                 <h5 class="card-text">`;
     var cardB = `</h5>
                 <h6 class="card-date mb-2 text-muted">`;
     var cardC = `</h6>
                 <div class="card-btn">
-                    <button class="btn btn-primary" type="button" id="button-addon2"><i class="far fa-check-square"></i></button>
-                    <button class="btn btn-danger" type="button" id="button-addon2"><i class="far fa-trash-alt"></i></button>
+                    <button class="btn complete btn-primary" type="button" id="button-addon2"><i class="far fa-check-square"></i></button>
+                    <button class="btn delete btn-danger" type="button" id="button-addon2"><i class="far fa-trash-alt"></i></button>
                 </div>
             </div>
         </div>`;
@@ -39,12 +39,16 @@ function randInt(num){
 
 function addItem(task){
     var item = $("<div>").html(generateCard(task));
-    item.addClass('col-12 col-sm-6 col-md-4');
+    item.addClass('card-container col-12 col-sm-6 col-md-4');
     todolist.append(item);
-    // todolist.append(generateCard(task));
     //selecting whole todo list, not last element!!
-    item.last().click(function(){
+    item.click(function(){
         $(this).toggleClass('done');
+    })
+    // create event listener for delete button
+    var deleteBtn = $('.delete');
+    deleteBtn.click(function(){
+        $(this).closest('.card-container').remove(); 
     })
 }
 
@@ -67,5 +71,3 @@ compileList();
 // new todo items
 addButton.click(enterTodo);
 inputBox.bind('change',enterTodo);
-
-// allow users to delete todos from list
